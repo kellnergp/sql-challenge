@@ -53,3 +53,19 @@ SELECT first_name, last_name, sex
 FROM employees 
 WHERE first_name = 'Hercules'
 AND last_name LIKE 'B%';
+
+-- q6: List all employees in the Sales department w/employee number, last name, 
+-- first name, and department name
+
+WITH tm AS 
+	(SELECT dept_no, emp_no FROM dept_manager
+	UNION
+	SELECT dept_no, emp_no FROM dept_emp) 
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM employees e
+LEFT JOIN tm
+ON tm.emp_no = e.emp_no
+LEFT JOIN departments d
+ON tm.dept_no = d.dept_no
+WHERE d.dept_name = 'Sales';	
+
