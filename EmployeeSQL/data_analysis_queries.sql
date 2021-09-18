@@ -11,7 +11,8 @@ ON e.emp_no = s.emp_no;
 -- query values from employees table where year component of hire_date column is 1986
 SELECT first_name, last_name, hire_date
 FROM employees
-WHERE RIGHT(hire_date, 4) = '1986'; -- last 4 digits is year in this format
+--WHERE RIGHT(hire_date, 4) = '1986'; -- last 4 digits is year in this format
+WHERE hire_date LIKE '%1986%'; -- same result, requires less specificity
 
 -- q3: list each manager w/ department number, department name, 
 -- the manager's employee number, last name, first name
@@ -42,3 +43,13 @@ LEFT JOIN tm
 ON tm.emp_no = e.emp_no
 LEFT JOIN departments d
 ON tm.dept_no = d.dept_no;
+
+-- q5: List first name, last name, and sex for employees whose 
+-- first name is "Hercules" and last names begin with "B."
+
+-- query columns from employees table with first_name = Hercules
+-- and last_name LIKE 'B%'
+SELECT first_name, last_name, sex
+FROM employees 
+WHERE first_name = 'Hercules'
+AND last_name LIKE 'B%';
