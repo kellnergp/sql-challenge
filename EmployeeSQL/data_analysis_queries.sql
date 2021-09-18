@@ -5,7 +5,9 @@ LEFT JOIN salaries s
 ON e.emp_no = s.emp_no;
 
 -- q2: List first name, last name, and hire date for employees who were hired in 1986
-
+SELECT first_name, last_name, hire_date
+FROM employees
+WHERE RIGHT(hire_date, 4) = '1986'; -- last 4 digits is year in this format
 
 -- q3: list each manager w/ department number, department name, 
 -- the manager's employee number, last name, first name
