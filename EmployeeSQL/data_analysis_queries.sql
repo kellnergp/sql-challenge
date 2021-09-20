@@ -57,6 +57,7 @@ AND last_name LIKE 'B%';
 -- q6: List all employees in the Sales department w/employee number, last name, 
 -- first name, and department name
 
+-- repeat code from q4, add a WHERE clause specifying the dept name must be 'Sales'
 WITH tm AS 
 	(SELECT dept_no, emp_no FROM dept_manager
 	UNION
@@ -72,6 +73,8 @@ WHERE d.dept_name = 'Sales';
 -- q7: all employees in the Sales and Development departments including:
 -- employee number, last name, first name, and department name
 
+-- repeat code from q6, adding an OR clause to call rows with either 'Sales' or
+-- 'Development' as the dept_name value
 WITH tm AS 
 	(SELECT dept_no, emp_no FROM dept_manager
 	UNION
@@ -85,6 +88,12 @@ ON tm.dept_no = d.dept_no
 WHERE d.dept_name = 'Sales'
 OR d.dept_name = 'Development';	
 
--- 
+-- q8: In descending order, list the frequency count of employee last names
 
-
+-- SELECT last names and count of last_name from employees, grouping by last_name,
+-- and ordered by count, with descending order specified
+SELECT last_name, COUNT(last_name) AS "employee count"
+FROM employees
+GROUP BY last_name
+ORDER BY "employee count"
+DESC;
