@@ -69,3 +69,22 @@ LEFT JOIN departments d
 ON tm.dept_no = d.dept_no
 WHERE d.dept_name = 'Sales';	
 
+-- q7: all employees in the Sales and Development departments including:
+-- employee number, last name, first name, and department name
+
+WITH tm AS 
+	(SELECT dept_no, emp_no FROM dept_manager
+	UNION
+	SELECT dept_no, emp_no FROM dept_emp) 
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM employees e
+LEFT JOIN tm
+ON tm.emp_no = e.emp_no
+LEFT JOIN departments d
+ON tm.dept_no = d.dept_no
+WHERE d.dept_name = 'Sales'
+OR d.dept_name = 'Development';	
+
+-- 
+
+
