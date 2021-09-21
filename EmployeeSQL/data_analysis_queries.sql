@@ -97,3 +97,11 @@ FROM employees
 GROUP BY last_name
 ORDER BY "employee count"
 DESC;
+
+
+-- Epilogue: search 'my' id no, 499942
+
+SELECT * FROM employees
+WHERE emp_no = '499942';
+
+-- april foolsday, hardy har
