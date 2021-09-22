@@ -49,10 +49,25 @@ Script: https://github.com/kellnergp/sql-challenge/blob/main/EmployeeSQL/data_an
 
 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
 
+      Use a WITH clause to generate a temporary table from a UNION of dept_emp and dept_manager, taking care to reorder the columns so that they line up properly.
+      JOIN  the temporary table to the employees table ON 'emp_no' then JOIN the departments table to the result on 'dept_no'.
+      Then SELECT 'emp_no', 'last_name', and 'first_name' from the employees table and 'dept_name' from the departments table.
+
 5. List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
+
+      SELECT 'first_name', 'last_name', and 'sex' from the employees table then use a WHERE clause to specify rows where 'first_name' = 'Hercules' AND
+      'last_name' is LIKE 'B%'
 
 6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
 
+      Repeat the steps from query 4 then add a WHERE clause specifying only rows that have 'dept_name' = 'Sales'.
+
 7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
 
+      Repeat the steps from query 4 then add a WHERE  clause specifying only rows that have 'dept_name' = 'Sales' OR 'dept_name' = 'Development'.
+
 8. In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+
+      SELECT 'last_name' and COUNT(last_name) from the employees table, GROUP BY 'last_name', and ORDER BY the COUNT value, specifying DESC order.
+      
+
